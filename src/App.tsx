@@ -5,6 +5,8 @@ import { DocumentDrawer } from './components/DocumentDrawer';
 import { DocumentStats } from './components/DocumentStats';
 import { DocumentTable } from './components/DocumentTable';
 import { DocumentToolbar } from './components/DocumentToolbar';
+import { Hero } from './components/Hero';
+import { Skeleton } from './components/Skeleton';
 import { useDocuments } from './hooks/useDocuments';
 import type { CustomerDocument, DocumentStatus, Stats } from './types';
 
@@ -48,16 +50,7 @@ export default function App() {
 
   return (
     <main className="page">
-      <section className="hero">
-        <div>
-          <p className="eyebrow">Operação interna</p>
-          <h1>Documentos de clientes</h1>
-          <p className="subtitle">
-            Revise documentos classificados automaticamente e acompanhe pendências da operação.
-          </p>
-        </div>
-        <button onClick={() => window.location.reload()}>Recarregar</button>
-      </section>
+      <Hero />
 
       <DocumentStats stats={stats} />
 
@@ -68,7 +61,8 @@ export default function App() {
         onStatusChange={setStatus}
       />
 
-      {isLoading && <p className="feedback">Carregando documentos...</p>}
+      {isLoading && <Skeleton count={5} />}
+
       {error && <p className="feedback error">{errorMessage}</p>}
 
       {!isLoading && !error && (

@@ -29,21 +29,8 @@ button {
   padding: 40px 24px;
 }
 
-.hero {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: flex-start;
-  margin-bottom: 24px;
-}
 
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #64748b;
-  font-size: 12px;
-  font-weight: 700;
-}
+
 
 h1 {
   margin: 0;
@@ -67,16 +54,4 @@ h1 {
   border-color: #fecaca;
   background: #fef2f2;
   color: #991b1b;
-}
-
-
-@media (max-width: 800px) {
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero,
-  .toolbar {
-    flex-direction: column;
-  }
 }

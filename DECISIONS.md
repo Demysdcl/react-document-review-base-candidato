@@ -22,10 +22,12 @@ Use este arquivo para explicar suas decisões técnicas.
 * Criei o hook useDocuments para utilizar o React Query e chamar a API
 * Refatorei novamente o App chamando o novo hook useDocuments
 * Adicionei useMemo para o filteredDocuments
+* Solicitei que a IA separasse os styles e colocasse no respectivo componente.
 
 ## Decisões de arquitetura
 
-* Pasta para mocks, Utilitários e tipos
+* Pasta para mocks, utilitários e tipos
+* Pasta para os components com index.tsx e styles.css
 
 ## Trade-offs
 
@@ -40,11 +42,20 @@ Use este arquivo para explicar suas decisões técnicas.
 
 ## Performance e observabilidade
 
--
+* Melhorei o algoritmo de pesquisa criando um texto único com os campos utilizados e com isso utilizei apenas um includes para filtrar a query
+* Adicionei mais um useMemo para o filteredDocuments
 
 ## Uso de IA
 
 Descreva quais ferramentas de IA você usou, em quais partes, quais outputs foram revisados/corrigidos e quais decisões continuaram sendo suas.
+
+* Utilizei o Codex para mapear o projeto
+* Utilizei o Gemini do VSCode para executar as demais refatorações
+* Revisei todos os componentes e testes
+* As ações tomadas pela IA foram em conformidade com a arquitetura que eu jugo para eficiente
+* Precisei remover a função de formação de dados dos componentes criados
+* Mover os css de responsividade para o style do respectivo componente
+* Adicionei mais um useMemo para o filteredDocuments
 
 ## O que faria com mais tempo
 

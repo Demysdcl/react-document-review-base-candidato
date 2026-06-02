@@ -21,3 +21,9 @@
 .stats span {
     color: #64748b;
 }
+
+@media (max-width: 800px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

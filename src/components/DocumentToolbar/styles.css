@@ -19,3 +19,9 @@
     border-radius: 10px;
     padding: 10px 12px;
 }
+
+@media (max-width: 800px) {
+    .toolbar {
+        flex-direction: column;
+    }
+}
