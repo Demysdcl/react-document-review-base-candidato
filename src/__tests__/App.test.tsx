@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { fetchDocuments, updateDocumentStatus } from '../api';
 import App from '../App';
-import { documents } from '../data';
+import { documents } from '../mocks/data';
 import type { CustomerDocument, DocumentStatus } from '../types';
 
 vi.mock('../api', () => ({

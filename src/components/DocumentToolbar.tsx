@@ -1,4 +1,6 @@
-type StatusFilter = 'all' | 'pending' | 'approved' | 'rejected' | 'reviewing';
+import { DocumentStatus } from "../types";
+
+type StatusFilter = DocumentStatus | 'all';
 
 type DocumentToolbarProps = {
   query: string;

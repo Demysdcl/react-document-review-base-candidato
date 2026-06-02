@@ -1,5 +1,5 @@
-import { documents } from './data';
-import type { CustomerDocument, DocumentStatus } from './types';
+import { documents } from '../mocks/data';
+import type { CustomerDocument, DocumentStatus } from '../types';
 
 let state = [...documents];
 

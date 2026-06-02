@@ -1,4 +1,5 @@
 import type { CustomerDocument, DocumentStatus } from '../types';
+import { formatDate } from '../utils/date';
 
 const statusLabels: Record<DocumentStatus, string> = {
     pending: 'Pendente',
@@ -6,16 +7,6 @@ const statusLabels: Record<DocumentStatus, string> = {
     rejected: 'Rejeitado',
     reviewing: 'Em análise'
 };
-
-function formatDate(value: string) {
-    return new Date(value).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-}
 
 type DocumentDrawerProps = {
     document: CustomerDocument;

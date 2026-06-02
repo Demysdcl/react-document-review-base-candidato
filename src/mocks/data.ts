@@ -1,4 +1,4 @@
-import type { CustomerDocument } from './types';
+import type { CustomerDocument } from '../types';
 
 export const documents: CustomerDocument[] = [
   {

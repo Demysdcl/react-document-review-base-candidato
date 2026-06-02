@@ -1,33 +1,23 @@
-import { useEffect, useMemo, useState } from 'react';
-import { fetchDocuments, updateDocumentStatus } from './api';
+import { useQueryClient } from '@tanstack/react-query';
+import { useMemo, useState } from 'react';
+import { updateDocumentStatus } from './api';
 import { DocumentDrawer } from './components/DocumentDrawer';
 import { DocumentStats } from './components/DocumentStats';
 import { DocumentTable } from './components/DocumentTable';
 import { DocumentToolbar } from './components/DocumentToolbar';
-import type { CustomerDocument, DocumentStatus } from './types';
+import { useDocuments } from './hooks/useDocuments';
+import type { CustomerDocument, DocumentStatus, Stats } from './types';
 
 type StatusFilter = DocumentStatus | 'all';
 
-
 export default function App() {
-  const [documents, setDocuments] = useState<CustomerDocument[]>([]);
+  const queryClient = useQueryClient();
+  const { data: documents = [], isLoading, error } = useDocuments();
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState<StatusFilter>('all');
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
   const [selectedDocument, setSelectedDocument] = useState<CustomerDocument | null>(null);
 
-  useEffect(() => {
-    fetchDocuments()
-      .then((result) => {
-        setDocuments(result);
-        setError('');
-      })
-      .catch((err) => setError(err.message))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  const stats = useMemo(() => {
+  const stats = useMemo<Stats>(() => {
     return {
       total: documents.length,
       pending: documents.filter((item) => item.status === 'pending').length,
@@ -36,19 +26,24 @@ export default function App() {
     };
   }, [documents]);
 
-  const filteredDocuments = documents.filter((document) => {
-    const matchesQuery =
-      document.title.toLowerCase().includes(query.toLowerCase()) ||
-      document.customerName.toLowerCase().includes(query.toLowerCase()) ||
-      document.category.toLowerCase().includes(query.toLowerCase());
+  const filteredDocuments = useMemo(() => documents.filter((document) => {
+    const baseText = `${document.title} ${document.customerName} ${document.category}`.toLowerCase();
+    const matchesQuery = baseText.includes(query.toLowerCase());
 
     const matchesStatus = status === 'all' ? true : document.status === status;
     return matchesQuery && matchesStatus;
-  });
+  }), [documents, query, status]);
+
+  const errorMessage = error instanceof Error ? error.message : 'Falha ao carregar documentos';
 
   async function handleStatusChange(id: string, nextStatus: DocumentStatus) {
     const updated = await updateDocumentStatus(id, nextStatus);
-    setDocuments((current) => current.map((item) => (item.id === id ? updated : item)));
+
+    queryClient.setQueryData<CustomerDocument[]>(['documents'], (current = []) =>
+      current.map((item) => (item.id === id ? updated : item))
+    );
+
+    setSelectedDocument((current) => (current?.id === id ? updated : current));
   }
 
   return (
@@ -74,7 +69,7 @@ export default function App() {
       />
 
       {isLoading && <p className="feedback">Carregando documentos...</p>}
-      {error && <p className="feedback error">{error}</p>}
+      {error && <p className="feedback error">{errorMessage}</p>}
 
       {!isLoading && !error && (
         <DocumentTable

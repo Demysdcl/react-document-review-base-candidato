@@ -13,3 +13,10 @@ export type CustomerDocument = {
   confidence?: number;
   assignedTo?: string | null;
 };
+
+export type Stats = {
+  total: number;
+  pending: number;
+  reviewing: number;
+  rejected: number;
+};
