@@ -1,5 +1,6 @@
-import type { CustomerDocument, DocumentStatus } from '../types';
-import { formatDate } from '../utils/date';
+import type { CustomerDocument, DocumentStatus } from '../../types';
+import { formatDate } from '../../utils/date';
+import './styles.css';
 
 const statusLabels: Record<DocumentStatus, string> = {
     pending: 'Pendente',

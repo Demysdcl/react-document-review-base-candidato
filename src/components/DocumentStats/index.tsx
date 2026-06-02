@@ -1,4 +1,5 @@
-import { Stats } from "../types";
+import { Stats } from "../../types";
+import './styles.css';
 
 type StatsProps = {
     stats: Stats;

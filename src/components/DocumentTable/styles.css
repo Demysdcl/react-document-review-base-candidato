@@ -1,0 +1,42 @@
+.table-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+    overflow: auto;
+}
+
+.table-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-card th,
+.table-card td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.table-card th {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.05em;
+}
+
+.table-card td small {
+    display: block;
+    margin-top: 4px;
+}
+
+.table-card tr:hover {
+    background: #f8fafc;
+}
+
+.table-card .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}

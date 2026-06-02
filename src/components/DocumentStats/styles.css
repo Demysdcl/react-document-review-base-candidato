@@ -1,0 +1,23 @@
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stats div {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+    padding: 18px;
+}
+
+.stats strong {
+    display: block;
+    font-size: 28px;
+}
+
+.stats span {
+    color: #64748b;
+}

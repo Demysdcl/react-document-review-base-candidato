@@ -1,4 +1,5 @@
-import { DocumentStatus } from "../types";
+import { DocumentStatus } from "../../types";
+import './styles.css';
 
 type StatusFilter = DocumentStatus | 'all';
 

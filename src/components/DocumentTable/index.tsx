@@ -1,6 +1,7 @@
-import type { CustomerDocument } from '../types';
-import { formatDate } from '../utils/date';
-import { StatusBadge } from './StatusBadge';
+import type { CustomerDocument } from '../../types';
+import { formatDate } from '../../utils/date';
+import { StatusBadge } from '../StatusBadge';
+import './styles.css';
 
 type DocumentTableProps = {
     documents: CustomerDocument[];
@@ -61,8 +62,10 @@ export function DocumentTable({
                             <td>{formatDate(document.createdAt)}</td>
                             <td>{document.assignedTo || 'Não atribuído'}</td>
                             <td>
-                                <button onClick={(e) => handleApprove(e, document.id)}>Aprovar</button>
-                                <button onClick={(e) => handleReject(e, document.id)}>Rejeitar</button>
+                                <div className="actions">
+                                    <button onClick={(e) => handleApprove(e, document.id)}>Aprovar</button>
+                                    <button onClick={(e) => handleReject(e, document.id)}>Rejeitar</button>
+                                </div>
                             </td>
                         </tr>
                     ))}

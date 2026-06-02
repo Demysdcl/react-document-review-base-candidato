@@ -1,4 +1,5 @@
-import type { DocumentStatus } from '../types';
+import type { DocumentStatus } from '../../types';
+import './styles.css';
 
 const statusLabels: Record<DocumentStatus, string> = {
   pending: 'Pendente',
