@@ -5,6 +5,7 @@ import { DocumentDrawer } from './components/DocumentDrawer';
 import { DocumentStats } from './components/DocumentStats';
 import { DocumentTable } from './components/DocumentTable';
 import { DocumentToolbar } from './components/DocumentToolbar';
+import { ErrorState } from './components/ErrorState';
 import { Hero } from './components/Hero';
 import { Skeleton } from './components/Skeleton';
 import { useDocuments } from './hooks/useDocuments';
@@ -63,7 +64,7 @@ export default function App() {
 
       {isLoading && <Skeleton count={5} />}
 
-      {error && <p className="feedback error">{errorMessage}</p>}
+      {error && <ErrorState message={errorMessage} />}
 
       {!isLoading && !error && (
         <DocumentTable
