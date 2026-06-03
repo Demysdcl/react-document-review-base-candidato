@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback, useMemo, useState } from 'react';
 import { updateDocumentStatus } from './api';
+import { DocumentCards } from './components/DocumentCards';
 import { DocumentDrawer } from './components/DocumentDrawer';
 import { DocumentStats } from './components/DocumentStats';
 import { DocumentTable } from './components/DocumentTable';
@@ -80,12 +81,21 @@ export default function App() {
       {error && <ErrorState message={errorMessage} />}
 
       {!isLoading && !error && (
-        <DocumentTable
-          documents={filteredDocuments}
-          onApprove={handleApprove}
-          onReject={handleReject}
-          onSelectDocument={setSelectedDocument}
-        />
+        <>
+          <DocumentTable
+            documents={filteredDocuments}
+            onApprove={handleApprove}
+            onReject={handleReject}
+            onSelectDocument={setSelectedDocument}
+          />
+
+          <DocumentCards
+            documents={filteredDocuments}
+            onApprove={handleApprove}
+            onReject={handleReject}
+            onSelectDocument={setSelectedDocument}
+          />
+        </>
       )}
 
       {selectedDocument && (

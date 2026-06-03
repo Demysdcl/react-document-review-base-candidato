@@ -37,7 +37,7 @@ function expectStat(label: string, value: string) {
 }
 
 async function waitForDocumentsToLoad() {
-  expect(await screen.findByText('Contrato Social - ACME LTDA')).toBeInTheDocument();
+  expect((await screen.findAllByText('Contrato Social - ACME LTDA'))[0]).toBeInTheDocument();
 }
 
 describe('App', () => {
@@ -84,10 +84,10 @@ describe('App', () => {
     expectStat('Em análise', '2');
     expectStat('Rejeitados', '1');
 
-    expect(screen.getByText('doc-001')).toBeInTheDocument();
-    expect(screen.getAllByText('Sem e-mail cadastrado')).toHaveLength(3);
-    expect(screen.getAllByText('Não atribuído')).toHaveLength(2);
-    expect(screen.getByText('74%')).toBeInTheDocument();
+    expect(screen.getAllByText('doc-001')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Sem e-mail cadastrado')).toHaveLength(6);
+    expect(screen.getAllByText('Não atribuído')).toHaveLength(4);
+    expect(screen.getAllByText('74%')[0]).toBeInTheDocument();
   });
 
   test('filtra documentos por texto de busca ignorando maiusculas e minusculas', async () => {
@@ -99,8 +99,8 @@ describe('App', () => {
     await user.type(screen.getByPlaceholderText('Buscar por título, cliente ou categoria'), 'fiscal');
 
     await waitFor(() => {
-      expect(screen.getByText('Nota Fiscal 98217')).toBeInTheDocument();
-      expect(screen.getByText('DANFE 445901')).toBeInTheDocument();
+      expect(screen.getAllByText('Nota Fiscal 98217')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('DANFE 445901')[0]).toBeInTheDocument();
       expect(screen.queryByText('Contrato Social - ACME LTDA')).not.toBeInTheDocument();
       expect(screen.queryByText('Comprovante de Endereço')).not.toBeInTheDocument();
     });
@@ -115,8 +115,8 @@ describe('App', () => {
     await user.selectOptions(screen.getByRole('combobox'), 'reviewing');
 
     await waitFor(() => {
-      expect(screen.getByText('Comprovante de Endereço')).toBeInTheDocument();
-      expect(screen.getByText('Procuração Digitalizada')).toBeInTheDocument();
+      expect(screen.getAllByText('Comprovante de Endereço')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('Procuração Digitalizada')[0]).toBeInTheDocument();
       expect(screen.queryByText('Contrato Social - ACME LTDA')).not.toBeInTheDocument();
       expect(screen.queryByText('Nota Fiscal 98217')).not.toBeInTheDocument();
     });
@@ -132,7 +132,7 @@ describe('App', () => {
     await user.selectOptions(screen.getByRole('combobox'), 'rejected');
 
     await waitFor(() => {
-      expect(screen.getByText('DANFE 445901')).toBeInTheDocument();
+      expect(screen.getAllByText('DANFE 445901')[0]).toBeInTheDocument();
       expect(screen.queryByText('Nota Fiscal 98217')).not.toBeInTheDocument();
     });
   });
@@ -143,7 +143,7 @@ describe('App', () => {
     renderApp();
     await waitForDocumentsToLoad();
 
-    await user.click(screen.getByText('Contrato Social - ACME LTDA'));
+    await user.click(screen.getAllByText('Contrato Social - ACME LTDA')[0]);
 
     const drawer = screen.getByRole('complementary');
     expect(within(drawer).getByRole('heading', { name: 'Contrato Social - ACME LTDA' })).toBeInTheDocument();
@@ -162,7 +162,7 @@ describe('App', () => {
     renderApp();
     await waitForDocumentsToLoad();
 
-    const acmeRow = screen.getByText('Contrato Social - ACME LTDA').closest('tr');
+    const acmeRow = screen.getAllByText('Contrato Social - ACME LTDA')[0].closest('tr');
     expect(acmeRow).not.toBeNull();
 
     await user.click(within(acmeRow as HTMLTableRowElement).getByRole('button', { name: 'Aprovar' }));
@@ -179,7 +179,7 @@ describe('App', () => {
     renderApp();
     await waitForDocumentsToLoad();
 
-    const reviewingRow = screen.getByText('Comprovante de Endereço').closest('tr');
+    const reviewingRow = screen.getAllByText('Comprovante de Endereço')[0].closest('tr');
     expect(reviewingRow).not.toBeNull();
 
     await user.click(within(reviewingRow as HTMLTableRowElement).getByRole('button', { name: 'Rejeitar' }));
