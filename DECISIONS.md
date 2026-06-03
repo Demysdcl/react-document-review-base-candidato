@@ -23,6 +23,7 @@ Use este arquivo para explicar suas decisões técnicas.
 * Refatorei novamente o App chamando o novo hook useDocuments
 * Adicionei useMemo para o filteredDocuments
 * Solicitei que a IA separasse os styles e colocasse no respectivo componente.
+* adicionei um componente de card para mostrar em dispositivos pequenos
 
 ## Decisões de arquitetura
 
@@ -31,7 +32,8 @@ Use este arquivo para explicar suas decisões técnicas.
 
 ## Trade-offs
 
--
+* Configurar um formatador padrão
+* Adicionar o Tailwind
 
 ## Testes adicionados
 
@@ -60,4 +62,6 @@ Descreva quais ferramentas de IA você usou, em quais partes, quais outputs fora
 
 ## O que faria com mais tempo
 
--
+* Adicionaria o React Compile
+* O oxlint e oxfmt para agilizar a validação e formatação
+* Adicionaria alias para as pastas compartilhadas
