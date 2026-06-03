@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Stats } from "../../types";
 import './styles.css';
 
@@ -5,7 +6,7 @@ type StatsProps = {
     stats: Stats;
 };
 
-export function DocumentStats({ stats }: StatsProps) {
+export const DocumentStats = memo(function DocumentStats({ stats }: StatsProps) {
     return (
         <section className="stats" aria-label="Indicadores">
             <div>
@@ -26,4 +27,4 @@ export function DocumentStats({ stats }: StatsProps) {
             </div>
         </section>
     );
-}
+});

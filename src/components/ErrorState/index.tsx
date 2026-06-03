@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import './styles.css';
 
 type ErrorStateProps = {
     message: string;
 };
 
-export function ErrorState({ message }: ErrorStateProps) {
+export const ErrorState = memo(function ErrorState({ message }: ErrorStateProps) {
     return (
         <section className="error-card" role="alert" aria-live="assertive">
             <span className="error-emoji" aria-hidden="true">⚠️</span>
@@ -14,4 +15,4 @@ export function ErrorState({ message }: ErrorStateProps) {
             </div>
         </section>
     );
-}
+});

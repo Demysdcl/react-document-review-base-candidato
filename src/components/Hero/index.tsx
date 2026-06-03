@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import './styles.css';
 
-export function Hero() {
+export const Hero = memo(function Hero() {
     return (
         <section className="hero">
             <div>
@@ -13,4 +14,4 @@ export function Hero() {
             <button onClick={() => window.location.reload()}>Recarregar</button>
         </section>
     );
-}
+});

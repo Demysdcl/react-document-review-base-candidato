@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { DocumentStatus } from '../../types';
 import './styles.css';
 
@@ -8,6 +9,6 @@ const statusLabels: Record<DocumentStatus, string> = {
   reviewing: 'Em análise'
 };
 
-export function StatusBadge({ status }: { status: DocumentStatus }) {
+export const StatusBadge = memo(function StatusBadge({ status }: { status: DocumentStatus }) {
   return <span className={`badge ${status}`}>{statusLabels[status]}</span>;
-}
+});

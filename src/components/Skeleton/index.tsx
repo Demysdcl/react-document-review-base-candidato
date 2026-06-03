@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import './styles.css';
 
 type SkeletonProps = {
     count?: number;
 };
 
-export function Skeleton({ count = 4 }: SkeletonProps) {
+export const Skeleton = memo(function Skeleton({ count = 4 }: SkeletonProps) {
     return (
         <section className="skeleton-card" aria-live="polite" aria-busy="true">
             <p className="sr-only">Carregando documentos...</p>
@@ -23,4 +24,4 @@ export function Skeleton({ count = 4 }: SkeletonProps) {
             ))}
         </section>
     );
-}
+});

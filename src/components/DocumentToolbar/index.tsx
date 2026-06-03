@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { DocumentStatus } from "../../types";
 import './styles.css';
 
@@ -10,7 +11,7 @@ type DocumentToolbarProps = {
   onStatusChange: (value: StatusFilter) => void;
 };
 
-export function DocumentToolbar({ query, status, onQueryChange, onStatusChange }: DocumentToolbarProps) {
+export const DocumentToolbar = memo(function DocumentToolbar({ query, status, onQueryChange, onStatusChange }: DocumentToolbarProps) {
   return (
     <section className="toolbar">
       <input
@@ -27,4 +28,4 @@ export function DocumentToolbar({ query, status, onQueryChange, onStatusChange }
       </select>
     </section>
   );
-}
+});

@@ -1,3 +1,4 @@
+import { memo, useCallback, type MouseEvent } from 'react';
 import type { CustomerDocument } from '../../types';
 import { formatDate } from '../../utils/date';
 import { StatusBadge } from '../StatusBadge';
@@ -10,7 +11,7 @@ type DocumentTableProps = {
     onSelectDocument: (document: CustomerDocument) => void;
 };
 
-export function DocumentTable({
+export const DocumentTable = memo(function DocumentTable({
     documents,
     onApprove,
     onReject,
@@ -18,15 +19,15 @@ export function DocumentTable({
 }: DocumentTableProps) {
 
 
-    const handleApprove = (event: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    const handleApprove = useCallback((event: MouseEvent<HTMLButtonElement>, id: string) => {
         event.stopPropagation();
         onApprove(id);
-    }
+    }, [onApprove]);
 
-    const handleReject = (event: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    const handleReject = useCallback((event: MouseEvent<HTMLButtonElement>, id: string) => {
         event.stopPropagation();
         onReject(id);
-    }
+    }, [onReject]);
 
     return (
         <section className="table-card">
@@ -73,4 +74,4 @@ export function DocumentTable({
             </table>
         </section>
     );
-}
+});

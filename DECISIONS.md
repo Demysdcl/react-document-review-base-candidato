@@ -43,7 +43,8 @@ Use este arquivo para explicar suas decisões técnicas.
 ## Performance e observabilidade
 
 * Melhorei o algoritmo de pesquisa criando um texto único com os campos utilizados e com isso utilizei apenas um includes para filtrar a query
-* Adicionei mais um useMemo para o filteredDocuments
+* Adicionei memoization para os novos components
+* um debounce para dar um pequeno delay na query evitando várias renderizações ao digitar o texto
 
 ## Uso de IA
 

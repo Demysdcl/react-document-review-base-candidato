@@ -98,10 +98,12 @@ describe('App', () => {
 
     await user.type(screen.getByPlaceholderText('Buscar por título, cliente ou categoria'), 'fiscal');
 
-    expect(screen.getByText('Nota Fiscal 98217')).toBeInTheDocument();
-    expect(screen.getByText('DANFE 445901')).toBeInTheDocument();
-    expect(screen.queryByText('Contrato Social - ACME LTDA')).not.toBeInTheDocument();
-    expect(screen.queryByText('Comprovante de Endereço')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Nota Fiscal 98217')).toBeInTheDocument();
+      expect(screen.getByText('DANFE 445901')).toBeInTheDocument();
+      expect(screen.queryByText('Contrato Social - ACME LTDA')).not.toBeInTheDocument();
+      expect(screen.queryByText('Comprovante de Endereço')).not.toBeInTheDocument();
+    });
   });
 
   test('filtra documentos por status selecionado', async () => {
@@ -112,10 +114,12 @@ describe('App', () => {
 
     await user.selectOptions(screen.getByRole('combobox'), 'reviewing');
 
-    expect(screen.getByText('Comprovante de Endereço')).toBeInTheDocument();
-    expect(screen.getByText('Procuração Digitalizada')).toBeInTheDocument();
-    expect(screen.queryByText('Contrato Social - ACME LTDA')).not.toBeInTheDocument();
-    expect(screen.queryByText('Nota Fiscal 98217')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Comprovante de Endereço')).toBeInTheDocument();
+      expect(screen.getByText('Procuração Digitalizada')).toBeInTheDocument();
+      expect(screen.queryByText('Contrato Social - ACME LTDA')).not.toBeInTheDocument();
+      expect(screen.queryByText('Nota Fiscal 98217')).not.toBeInTheDocument();
+    });
   });
 
   test('combina busca textual e filtro por status', async () => {
@@ -127,8 +131,10 @@ describe('App', () => {
     await user.type(screen.getByPlaceholderText('Buscar por título, cliente ou categoria'), 'fiscal');
     await user.selectOptions(screen.getByRole('combobox'), 'rejected');
 
-    expect(screen.getByText('DANFE 445901')).toBeInTheDocument();
-    expect(screen.queryByText('Nota Fiscal 98217')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('DANFE 445901')).toBeInTheDocument();
+      expect(screen.queryByText('Nota Fiscal 98217')).not.toBeInTheDocument();
+    });
   });
 
   test('abre e fecha o drawer de detalhes ao clicar em uma linha', async () => {
