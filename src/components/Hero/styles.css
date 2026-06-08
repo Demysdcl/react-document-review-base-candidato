@@ -1,22 +1,21 @@
 .hero {
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    align-items: flex-start;
-    margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 24px;
 }
 
 .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #64748b;
-    font-size: 12px;
-    font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--secondary-color);
+  font-size: 12px;
+  font-weight: 700;
 }
 
-
 @media (max-width: 800px) {
-    .hero {
-        flex-direction: column;
-    }
+  .hero {
+    flex-direction: column;
+  }
 }

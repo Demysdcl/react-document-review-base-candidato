@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { DocumentStatus } from "../../types";
+import { DocumentStatus } from '../../types';
 import './styles.css';
 
 type StatusFilter = DocumentStatus | 'all';
@@ -11,7 +11,12 @@ type DocumentToolbarProps = {
   onStatusChange: (value: StatusFilter) => void;
 };
 
-export const DocumentToolbar = memo(function DocumentToolbar({ query, status, onQueryChange, onStatusChange }: DocumentToolbarProps) {
+export const DocumentToolbar = memo(function DocumentToolbar({
+  query,
+  status,
+  onQueryChange,
+  onStatusChange,
+}: DocumentToolbarProps) {
   return (
     <section className="toolbar">
       <input
@@ -19,7 +24,10 @@ export const DocumentToolbar = memo(function DocumentToolbar({ query, status, on
         value={query}
         onChange={(event) => onQueryChange(event.target.value)}
       />
-      <select value={status} onChange={(event) => onStatusChange(event.target.value as StatusFilter)}>
+      <select
+        value={status}
+        onChange={(event) => onStatusChange(event.target.value as StatusFilter)}
+      >
         <option value="all">Todos os status</option>
         <option value="pending">Pendente</option>
         <option value="reviewing">Em análise</option>

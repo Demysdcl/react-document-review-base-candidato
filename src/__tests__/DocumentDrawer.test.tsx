@@ -16,15 +16,21 @@ const sampleDocument: CustomerDocument = {
   category: 'Contrato',
   createdAt: '2026-05-26T10:30:00Z',
   confidence: 0.74,
-  assignedTo: null
+  assignedTo: null,
 };
 
 describe('DocumentDrawer', () => {
   test('renderiza o drawer com os detalhes do documento selecionado', () => {
     render(<DocumentDrawer document={sampleDocument} onClose={vi.fn()} />);
 
-    expect(screen.getByRole('heading', { name: 'Contrato Social - ACME LTDA' })).toBeInTheDocument();
-    expect(screen.getByText((_, element) => element?.textContent === 'Cliente: ACME LTDA')).toBeInTheDocument();
-    expect(screen.getByText((_, element) => element?.textContent === 'Status: Pendente')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Contrato Social - ACME LTDA' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText((_, element) => element?.textContent === 'Cliente: ACME LTDA'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText((_, element) => element?.textContent === 'Status: Pendente'),
+    ).toBeInTheDocument();
   });
 });

@@ -6,7 +6,7 @@ const statusLabels: Record<DocumentStatus, string> = {
   pending: 'Pendente',
   approved: 'Aprovado',
   rejected: 'Rejeitado',
-  reviewing: 'Em análise'
+  reviewing: 'Em análise',
 };
 
 export const StatusBadge = memo(function StatusBadge({ status }: { status: DocumentStatus }) {

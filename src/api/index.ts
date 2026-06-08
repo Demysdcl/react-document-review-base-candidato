@@ -18,7 +18,10 @@ export async function fetchDocuments(): Promise<CustomerDocument[]> {
   return [...state];
 }
 
-export async function updateDocumentStatus(id: string, status: DocumentStatus): Promise<CustomerDocument> {
+export async function updateDocumentStatus(
+  id: string,
+  status: DocumentStatus,
+): Promise<CustomerDocument> {
   await wait(350);
 
   const document = state.find((item) => item.id === id);
@@ -29,7 +32,7 @@ export async function updateDocumentStatus(id: string, status: DocumentStatus): 
   const updated = {
     ...document,
     status,
-    updatedAt: new Date().toISOString()
+    updatedAt: new Date().toISOString(),
   };
 
   state = state.map((item) => (item.id === id ? updated : item));

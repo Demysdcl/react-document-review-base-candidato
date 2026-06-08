@@ -9,7 +9,7 @@ import type { CustomerDocument, DocumentStatus } from '../types';
 
 vi.mock('../api', () => ({
   fetchDocuments: vi.fn(),
-  updateDocumentStatus: vi.fn()
+  updateDocumentStatus: vi.fn(),
 }));
 
 const fetchDocumentsMock = vi.mocked(fetchDocuments);
@@ -25,7 +25,7 @@ function renderApp() {
   return render(
     <QueryClientProvider client={queryClient}>
       <App />
-    </QueryClientProvider>
+    </QueryClientProvider>,
   );
 }
 
@@ -54,7 +54,7 @@ describe('App', () => {
       return {
         ...document,
         status,
-        updatedAt: '2026-06-02T12:00:00.000Z'
+        updatedAt: '2026-06-02T12:00:00.000Z',
       };
     });
   });
@@ -70,7 +70,9 @@ describe('App', () => {
 
     expect(screen.getByText('Documentos de clientes')).toBeInTheDocument();
     expect(screen.getByText('Carregando documentos...')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Buscar por título, cliente ou categoria')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('Buscar por título, cliente ou categoria'),
+    ).toBeInTheDocument();
     expect(screen.getByRole('combobox')).toHaveValue('all');
   });
 
@@ -96,7 +98,10 @@ describe('App', () => {
     renderApp();
     await waitForDocumentsToLoad();
 
-    await user.type(screen.getByPlaceholderText('Buscar por título, cliente ou categoria'), 'fiscal');
+    await user.type(
+      screen.getByPlaceholderText('Buscar por título, cliente ou categoria'),
+      'fiscal',
+    );
 
     await waitFor(() => {
       expect(screen.getAllByText('Nota Fiscal 98217')[0]).toBeInTheDocument();
@@ -128,7 +133,10 @@ describe('App', () => {
     renderApp();
     await waitForDocumentsToLoad();
 
-    await user.type(screen.getByPlaceholderText('Buscar por título, cliente ou categoria'), 'fiscal');
+    await user.type(
+      screen.getByPlaceholderText('Buscar por título, cliente ou categoria'),
+      'fiscal',
+    );
     await user.selectOptions(screen.getByRole('combobox'), 'rejected');
 
     await waitFor(() => {
@@ -146,7 +154,9 @@ describe('App', () => {
     await user.click(screen.getAllByText('Contrato Social - ACME LTDA')[0]);
 
     const drawer = screen.getByRole('complementary');
-    expect(within(drawer).getByRole('heading', { name: 'Contrato Social - ACME LTDA' })).toBeInTheDocument();
+    expect(
+      within(drawer).getByRole('heading', { name: 'Contrato Social - ACME LTDA' }),
+    ).toBeInTheDocument();
     expect(drawer).toHaveTextContent('Cliente: ACME LTDA');
     expect(drawer).toHaveTextContent('Status: Pendente');
     expect(drawer).toHaveTextContent('Categoria: Contrato');
@@ -165,7 +175,9 @@ describe('App', () => {
     const acmeRow = screen.getAllByText('Contrato Social - ACME LTDA')[0].closest('tr');
     expect(acmeRow).not.toBeNull();
 
-    await user.click(within(acmeRow as HTMLTableRowElement).getByRole('button', { name: 'Aprovar' }));
+    await user.click(
+      within(acmeRow as HTMLTableRowElement).getByRole('button', { name: 'Aprovar' }),
+    );
 
     await waitFor(() => {
       expect(updateDocumentStatusMock).toHaveBeenCalledWith('doc-001', 'approved');
@@ -182,11 +194,15 @@ describe('App', () => {
     const reviewingRow = screen.getAllByText('Comprovante de Endereço')[0].closest('tr');
     expect(reviewingRow).not.toBeNull();
 
-    await user.click(within(reviewingRow as HTMLTableRowElement).getByRole('button', { name: 'Rejeitar' }));
+    await user.click(
+      within(reviewingRow as HTMLTableRowElement).getByRole('button', { name: 'Rejeitar' }),
+    );
 
     await waitFor(() => {
       expect(updateDocumentStatusMock).toHaveBeenCalledWith('doc-003', 'rejected');
-      expect(within(reviewingRow as HTMLTableRowElement).getByText('Rejeitado')).toBeInTheDocument();
+      expect(
+        within(reviewingRow as HTMLTableRowElement).getByText('Rejeitado'),
+      ).toBeInTheDocument();
     });
   });
 
