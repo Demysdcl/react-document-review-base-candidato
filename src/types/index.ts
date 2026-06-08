@@ -1,5 +1,6 @@
 // Arquivo propositalmente incompleto. O candidato deve melhorar a modelagem.
 export type DocumentStatus = 'pending' | 'approved' | 'rejected' | 'reviewing';
+export type DocumentCategory = 'Contrato' | 'Cadastro' | 'Fiscal' | 'Financeiro' | 'Jurídico';
 
 export type CustomerDocument = {
   id: string;
@@ -7,7 +8,7 @@ export type CustomerDocument = {
   customerName: string;
   customerEmail?: string;
   status: DocumentStatus;
-  category: string;
+  category: DocumentCategory;
   createdAt: string;
   updatedAt?: string;
   confidence?: number;

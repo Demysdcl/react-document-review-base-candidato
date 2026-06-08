@@ -49,14 +49,14 @@ A aplicacao foi criada com React, TypeScript e Vite, usando dados mockados em me
 
 ### Arquivos principais
 
-* `src/main.tsx`: ponto de entrada da aplicacao React. Cria o `QueryClient`, registra o provider e renderiza `App`.
-* `src/App.tsx`: componente principal da tela. Controla carregamento, filtros, indicadores, tabela, drawer e atualizacao de status.
-* `src/hooks/useDocuments.ts`: hook React Query que chama `fetchDocuments()` e fornece dados, estado de carregamento e erro.
-* `src/api/index.ts`: API mockada em memoria para buscar documentos e atualizar status.
-* `src/mocks/data.ts`: base inicial dos documentos usados nos testes e na tela.
-* `src/components/`: componentes reutilizaveis da interface (`DocumentStats`,   `DocumentTable`,   `DocumentToolbar`,   `DocumentDrawer`,   `StatusBadge`).
-* `src/types.ts`: definicoes de tipos, incluindo `DocumentStatus`,  `CustomerDocument` e `Stats`.
-* `src/__tests__/`: suite de testes automatizados com Vitest + Testing Library.
+- `src/main.tsx`: ponto de entrada da aplicacao React. Cria o `QueryClient`, registra o provider e renderiza `App`.
+- `src/App.tsx`: componente principal da tela. Controla carregamento, filtros, indicadores, tabela, drawer e atualizacao de status.
+- `src/hooks/useDocuments.ts`: hook React Query que chama `fetchDocuments()` e fornece dados, estado de carregamento e erro.
+- `src/api/index.ts`: API mockada em memoria para buscar documentos e atualizar status.
+- `src/mocks/data.ts`: base inicial dos documentos usados nos testes e na tela.
+- `src/components/`: componentes reutilizaveis da interface (`DocumentStats`, `DocumentTable`, `DocumentToolbar`, `DocumentDrawer`, `StatusBadge`).
+- `src/types.ts`: definicoes de tipos, incluindo `DocumentStatus`, `CustomerDocument` e `Stats`.
+- `src/__tests__/`: suite de testes automatizados com Vitest + Testing Library.
 
 ## Scripts disponiveis
 
@@ -96,17 +96,17 @@ Executa o ESLint para arquivos TypeScript/TSX com avisos proibidos.
 
 ### Producao
 
-* `react` e `react-dom`: biblioteca base da interface.
-* `@tanstack/react-query`: provider configurado no `main.tsx` para contexto de consulta.
-* `vite` e `@vitejs/plugin-react`: build e desenvolvimento.
-* `typescript`: verificacao estaticas de tipos.
+- `react` e `react-dom`: biblioteca base da interface.
+- `@tanstack/react-query`: provider configurado no `main.tsx` para contexto de consulta.
+- `vite` e `@vitejs/plugin-react`: build e desenvolvimento.
+- `typescript`: verificacao estaticas de tipos.
 
 ### Desenvolvimento
 
-* `vitest`: executa os testes.
-* `jsdom`: ambiente DOM para testes.
-* `@testing-library/react`,  `@testing-library/jest-dom` e `@testing-library/user-event`: avaliacoes de interface e interacao.
-* `eslint`,   `typescript-eslint`,   `eslint-plugin-react-hooks`,   `eslint-plugin-react-refresh`: validacoes de qualidade e padrao.
+- `vitest`: executa os testes.
+- `jsdom`: ambiente DOM para testes.
+- `@testing-library/react`, `@testing-library/jest-dom` e `@testing-library/user-event`: avaliacoes de interface e interacao.
+- `eslint`, `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`: validacoes de qualidade e padrao.
 
 ## Configuracao tecnica
 
@@ -124,12 +124,12 @@ A suite atual usa Vitest + Testing Library e carrega `src/test-setup.ts` para ha
 
 Os testes cobrem:
 
-* renderizacao e carregamento inicial; 
-* busca textual e filtro por status; 
-* calculo de indicadores; 
-* abertura e fechamento do drawer; 
-* aprovacao e rejeicao de documentos; 
-* mensagens de erro de carregamento.
+- renderizacao e carregamento inicial;
+- busca textual e filtro por status;
+- calculo de indicadores;
+- abertura e fechamento do drawer;
+- aprovacao e rejeicao de documentos;
+- mensagens de erro de carregamento.
 
 ## Tipagem
 
@@ -169,29 +169,29 @@ export type Stats = {
 
 ## Funcionalidades da interface
 
-* Carregamento inicial com feedback visual.
-* Indicadores de total, pendentes, em analise e rejeitados.
-* Busca textual por titulo, cliente e categoria.
-* Filtro por status com valor `all` como padrao.
-* Tabela com status, confianca, responsavel e botoes de aprovacao/rejeicao.
-* Drawer lateral com detalhes do documento selecionado.
-* Botao `Recarregar` para recarregar a pagina inteira.
+- Carregamento inicial com feedback visual.
+- Indicadores de total, pendentes, em analise e rejeitados.
+- Busca textual por titulo, cliente e categoria.
+- Filtro por status com valor `all` como padrao.
+- Tabela com status, confianca, responsavel e botoes de aprovacao/rejeicao.
+- Drawer lateral com detalhes do documento selecionado.
+- Botao `Recarregar` para recarregar a pagina inteira.
 
 ## Estado atual dos testes
 
 A suite atual inclui os seguintes arquivos:
 
-* `src/__tests__/App.test.tsx`
-* `src/__tests__/DocumentDrawer.test.tsx`
-* `src/__tests__/DocumentStats.test.tsx`
-* `src/__tests__/DocumentTable.test.tsx`
-* `src/__tests__/StatusBadge.test.tsx`
+- `src/__tests__/App.test.tsx`
+- `src/__tests__/DocumentDrawer.test.tsx`
+- `src/__tests__/DocumentStats.test.tsx`
+- `src/__tests__/DocumentTable.test.tsx`
+- `src/__tests__/StatusBadge.test.tsx`
 
 Esses testes validam comportamento real da interface, incluindo interacoes e renderizacao de componentes.
 
 ## Observacoes tecnicas importantes
 
-* Os dados sao mockados e nao dependem de backend real.
-* O `QueryClientProvider` esta configurado e o carregamento inicial agora e feito via `useDocuments()` com React Query.
-* A atualizacao de status usa o cache do React Query para manter a tela sincronizada sem depender de estado local manual para a lista principal.
-* A documentacao foi atualizada para refletir a estrutura e a cobertura de testes presentes neste repositorio.
+- Os dados sao mockados e nao dependem de backend real.
+- O `QueryClientProvider` esta configurado e o carregamento inicial agora e feito via `useDocuments()` com React Query.
+- A atualizacao de status usa o cache do React Query para manter a tela sincronizada sem depender de estado local manual para a lista principal.
+- A documentacao foi atualizada para refletir a estrutura e a cobertura de testes presentes neste repositorio.

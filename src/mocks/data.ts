@@ -10,7 +10,7 @@ export const documents: CustomerDocument[] = [
     category: 'Contrato',
     createdAt: '2026-05-26T10:30:00Z',
     confidence: 0.74,
-    assignedTo: null
+    assignedTo: null,
   },
   {
     id: 'doc-002',
@@ -21,7 +21,7 @@ export const documents: CustomerDocument[] = [
     createdAt: '2026-05-27T13:10:00Z',
     updatedAt: '2026-05-27T14:20:00Z',
     confidence: 0.96,
-    assignedTo: 'Marina'
+    assignedTo: 'Marina',
   },
   {
     id: 'doc-003',
@@ -32,7 +32,7 @@ export const documents: CustomerDocument[] = [
     category: 'Cadastro',
     createdAt: '2026-05-29T08:05:00Z',
     confidence: 0.62,
-    assignedTo: 'Rafa'
+    assignedTo: 'Rafa',
   },
   {
     id: 'doc-004',
@@ -43,7 +43,7 @@ export const documents: CustomerDocument[] = [
     createdAt: '2026-05-30T16:45:00Z',
     updatedAt: '2026-05-30T17:01:00Z',
     confidence: 0.41,
-    assignedTo: 'Marina'
+    assignedTo: 'Marina',
   },
   {
     id: 'doc-005',
@@ -54,7 +54,7 @@ export const documents: CustomerDocument[] = [
     category: 'Financeiro',
     createdAt: '2026-06-01T12:22:00Z',
     confidence: 0.81,
-    assignedTo: null
+    assignedTo: null,
   },
   {
     id: 'doc-006',
@@ -64,6 +64,6 @@ export const documents: CustomerDocument[] = [
     category: 'Jurídico',
     createdAt: '2026-06-01T18:12:00Z',
     confidence: 0.59,
-    assignedTo: 'Diego'
-  }
+    assignedTo: 'Diego',
+  },
 ];

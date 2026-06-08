@@ -17,7 +17,7 @@ const sampleDocument: CustomerDocument = {
   category: 'Contrato',
   createdAt: '2026-05-26T10:30:00Z',
   confidence: 0.74,
-  assignedTo: null
+  assignedTo: null,
 };
 
 describe('DocumentTable', () => {
@@ -32,7 +32,7 @@ describe('DocumentTable', () => {
         onApprove={onApprove}
         onReject={onReject}
         onSelectDocument={vi.fn()}
-      />
+      />,
     );
 
     await user.click(screen.getByRole('button', { name: 'Aprovar' }));

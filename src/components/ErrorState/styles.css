@@ -1,26 +1,26 @@
 .error-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
-    border: 1px solid #fecaca;
-    border-radius: 16px;
-    background: #fff7f7;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--error-border);
+  border-radius: 16px;
+  background: var(--error-card);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
 }
 
 .error-emoji {
-    font-size: 24px;
-    line-height: 1;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .error-title {
-    margin: 0 0 4px;
-    font-size: 16px;
-    color: #991b1b;
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: var(--error-color);
 }
 
 .error-message {
-    margin: 0;
-    color: #7f1d1d;
+  margin: 0;
+  color: var(--error-message);
 }

@@ -1,7 +1,35 @@
 :root {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #172033;
-  background: #f5f7fb;
+  --primary-color: #172033;
+  --secondary-color: #64748b;
+  --error-color: #991b1b;
+  --error-border: #fecaca;
+  --error-background: #fef2f2;
+  --error-message: #7f1d1d;
+  --error-card: #fff7f7;
+  --white-color: #fff;
+  --background-light: #f5f7fb;
+  --border-color: #e2e8f0;
+  --line-hover: #f8fafc;
+  --toolbar-border: #cbd5e1;
+  --pending-bg: #fef3c7;
+  --reviewing-bg: #dbeafe;
+  --approved-bg: #dcfce7;
+  --rejected-bg: #fee2e2;
+  --pending-color: #92400e;
+  --reviewing-color: #1e40af;
+  --approved-color: #166534;
+  --rejected-color: #991b1b;
+
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  color: var(--primary-color);
+  background: var(--background-light);
 }
 
 body {
@@ -14,23 +42,11 @@ select {
   font: inherit;
 }
 
-button {
-  border: 0;
-  border-radius: 10px;
-  padding: 8px 12px;
-  cursor: pointer;
-  background: #172033;
-  color: #fff;
-}
-
 .page {
   max-width: 1180px;
   margin: 0 auto;
   padding: 40px 24px;
 }
-
-
-
 
 h1 {
   margin: 0;
@@ -38,20 +54,19 @@ h1 {
 }
 
 .subtitle {
-  color: #64748b;
+  color: var(--secondary-color);
   max-width: 680px;
 }
-
 
 .feedback {
   padding: 18px;
   border-radius: 12px;
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
 }
 
 .feedback.error {
-  border-color: #fecaca;
-  background: #fef2f2;
-  color: #991b1b;
+  border-color: var(--error-border);
+  background: var(--error-background);
+  color: var(--error-color);
 }
